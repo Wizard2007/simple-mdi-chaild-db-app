@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{23FCE3D8-87D7-4B1B-A93A-A74F33391A9C}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="SimpleMDIDB.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="MDIChild.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="SimpleMDIDB">
+        <MSBuild Projects="SimpleMDIDB.cbproj"/>
+    </Target>
+    <Target Name="SimpleMDIDB:Clean">
+        <MSBuild Projects="SimpleMDIDB.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SimpleMDIDB:Make">
+        <MSBuild Projects="SimpleMDIDB.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="MDIChild">
+        <MSBuild Projects="MDIChild.cbproj"/>
+    </Target>
+    <Target Name="MDIChild:Clean">
+        <MSBuild Projects="MDIChild.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="MDIChild:Make">
+        <MSBuild Projects="MDIChild.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="SimpleMDIDB;MDIChild"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="SimpleMDIDB:Clean;MDIChild:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="SimpleMDIDB:Make;MDIChild:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
