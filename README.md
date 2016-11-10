@@ -1,4 +1,4 @@
-# ruby-library ruby  garage 
+# simple mdi chaild db app
 Аpplication consist of two parts:
 
 1. The main application (style MDIForm), which has everything you need to communicate with the database. there are items to open the child form, and close the application from the main menu.
